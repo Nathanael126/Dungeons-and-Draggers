@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.mainController">
+   <center>
+      <Pane fx:id="gridPane" prefHeight="450.0" prefWidth="450.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin></Pane>
+   </center>
+   <right>
+      <BorderPane BorderPane.alignment="CENTER">
+         <top>
+            <Pane prefHeight="225.0" prefWidth="150.0" style="-fx-background-color: LIGHTGRAY;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="48.0" layoutY="70.0" mnemonicParsing="false" onAction="#createPiece" text="Create">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <TextField fx:id="nameText" layoutX="17.0" layoutY="105.0" onAction="#setName" prefHeight="25.0" prefWidth="115.0" promptText="Name" />
+                  <TextField fx:id="healthText" layoutX="17.0" layoutY="139.0" onAction="#setHealth" prefHeight="25.0" prefWidth="115.0" promptText="Health" />
+                  <Text layoutX="25.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Character" textAlignment="CENTER" wrappingWidth="100.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="loadImage" layoutX="33.0" layoutY="182.0" mnemonicParsing="false" onAction="#pickImage" text="Select Image" />
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="playersTable" prefHeight="225.0" prefWidth="150.0" />
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+   </right>
+</BorderPane>
