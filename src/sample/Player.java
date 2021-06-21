@@ -18,7 +18,12 @@ public class Player extends Piece{
 
     public void setName(String name) {
         this.name = name;
+        System.out.println(name);
     }
 
     public void setHealth(String health){ this.health = health;}
+
+    public String getName(){return name;};
+
+    public String getHealth(){return health;};
 }

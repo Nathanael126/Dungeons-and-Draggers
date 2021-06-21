@@ -1,11 +1,8 @@
 package sample;
 
 //  Imports from JavaFX
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -37,7 +34,10 @@ public class mainController {
     BorderPane borderPane;
 
     @FXML
-    TableView<Player> playersTable;
+    Label nameLabel;
+
+    @FXML
+    Label healthLabel;
 
 //  Grid variables
     private int gridSize = 450;
@@ -50,7 +50,7 @@ public class mainController {
     private Image picture;
 
 //  Table values
-    private ObservableList<Player> players = FXCollections.observableArrayList();
+    private ArrayList<Player> players = new ArrayList<>();
 
 //  Create grid
     @FXML
@@ -79,10 +79,12 @@ public class mainController {
         Player p = new Player(x, tileSize/2, radius, circle);
 
 //      Adding the data
+        name = nameText.getText();
+        health = healthText.getText();
         p.setName(name);
-        nameText.setText(null);
         p.setHealth(health);
         healthText.setText(null);
+        nameText.setText(null);
         if (picture != null){
             p.setImage(picture);
             picture = null;
@@ -99,15 +101,17 @@ public class mainController {
     }
 
 //  Piece interactions with mouse
-    public void piecePressed(MouseEvent event, Piece p){
+    public void piecePressed(MouseEvent event, Player p){
         p.setColor(Color.DARKRED);
+        healthLabel.setText(p.getHealth());
+        nameLabel.setText(p.getName());
     }
-    public void pieceDragged(MouseEvent event, Piece p){
+    public void pieceDragged(MouseEvent event, Player p){
         p.setX(p.getX() + event.getX());
         p.setY(p.getY() + event.getY());
         p.place();
     }
-    public void pieceReleased(MouseEvent event, Piece p){
+    public void pieceReleased(MouseEvent event, Player p){
         int gridx = (int)p.getX() / tileSize;
         int gridy = (int)p.getY() / tileSize;
         p.setX(tileSize/2+tileSize*gridx);
@@ -118,33 +122,12 @@ public class mainController {
 
 //   Image loader
     @FXML
-    public void pickImage(ActionEvent e){
+    public void pickImage(ActionEvent e) {
         FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) borderPane.getScene().getWindow();
         File openedFile = fileChooser.showOpenDialog(stage);
         if (openedFile != null) {
             picture = new Image(openedFile.toURI().toString());
         }
-    }
-
-//   Text loader
-    @FXML
-    public void setName(ActionEvent e){
-        name = nameText.getText();
-    }
-
-    @FXML
-    public void setHealth(ActionEvent e){
-        health = healthText.getText();
-    }
-
-//   Create table
-    @FXML
-    public void tableInitialize(){
-        TableColumn<Player, String> playernameTableColumn = new TableColumn<>("Name");
-        playernameTableColumn.cellValueFactoryProperty(new PropertyValueFactory<>("name"));
-
-        TableColumn<Player, String> playerHealthTableColumn = new TableColumn<>("Health");
-        playerHealthTableColumn.cellValueFactoryProperty(new PropertyValueFactory<>("health"));
     }
 }
