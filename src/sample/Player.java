@@ -2,10 +2,6 @@ package sample;
 
 //  Imports from JavaFX
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Text;
-import javafx.scene.control.Label;
-
-import javax.lang.model.type.NullType;
 
 public class Player extends Piece{
 
