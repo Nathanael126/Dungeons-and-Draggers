@@ -46,13 +46,14 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nameLabel" layoutX="44.0" layoutY="45.0" prefHeight="31.0" prefWidth="63.0" text="Name" textAlignment="CENTER" />
                   <Label layoutX="44.0" layoutY="82.0" prefHeight="31.0" prefWidth="63.0" text="Health" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="healthLabel" layoutX="44.0" layoutY="113.0" prefHeight="31.0" prefWidth="63.0" text="Health" textAlignment="CENTER" />
+                  <Button layoutX="49.0" layoutY="158.0" mnemonicParsing="false" onAction="#updatePlayer" text="Update" />
+                  <TextField fx:id="nameLabel" layoutX="18.0" layoutY="48.0" prefHeight="25.0" prefWidth="115.0" promptText="Name" />
+                  <TextField fx:id="healthLabel" layoutX="18.0" layoutY="116.0" prefHeight="25.0" prefWidth="115.0" promptText="Health" />
                </children>
             </Pane>
          </bottom>

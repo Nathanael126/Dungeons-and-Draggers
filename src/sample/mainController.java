@@ -34,10 +34,10 @@ public class mainController {
     BorderPane borderPane;
 
     @FXML
-    Label nameLabel;
+    TextField nameLabel;
 
     @FXML
-    Label healthLabel;
+    TextField healthLabel;
 
 //  Grid variables
     private int gridSize = 450;
@@ -48,6 +48,7 @@ public class mainController {
     private String name;
     private String health;
     private Image picture;
+    private Player selectedPlayer;
 
 //  Table values
     private ArrayList<Player> players = new ArrayList<>();
@@ -105,6 +106,7 @@ public class mainController {
         p.setColor(Color.DARKRED);
         healthLabel.setText(p.getHealth());
         nameLabel.setText(p.getName());
+        selectedPlayer = p;
     }
     public void pieceDragged(MouseEvent event, Player p){
         p.setX(p.getX() + event.getX());
@@ -129,5 +131,12 @@ public class mainController {
         if (openedFile != null) {
             picture = new Image(openedFile.toURI().toString());
         }
+    }
+
+//  Update pieces
+    @FXML
+    public void updatePlayer(ActionEvent e){
+        selectedPlayer.setHealth(healthLabel.getText());
+        selectedPlayer.setName(nameLabel.getText());
     }
 }

@@ -12,10 +12,7 @@ public class Player extends Piece{
         super(X, Y, radius, circle);
     }
 
-    public void setName(String name) {
-        this.name = name;
-        System.out.println(name);
-    }
+    public void setName(String name) { this.name = name; }
 
     public void setHealth(String health){ this.health = health;}
 
